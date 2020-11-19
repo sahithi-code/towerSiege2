@@ -5,8 +5,10 @@ const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Constraint = Matter.Constraint;
 var img;
-
+var score=0;
 //var ball;
+var gameState = "onSling";
+
 function preload()
 {
  // img = loadImage('assets/gradient.png');
@@ -64,9 +66,16 @@ Engine.run(engine);
 function draw() {
   rectMode(CENTER);
   background(178,190,181);
+
+  textSize(15)
+text ("Score:"+score,1000,50)
+
   box1.display();
+  //score.display();
   box2.display();
+  //box2.score.display();
   box3.display();
+  //box3.score.display();
   box4.display();
   box5.display();
 
@@ -116,3 +125,21 @@ function keyPressed(){
     
 
   }}
+  async function getTime(){
+    var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
+    var responeJSON = await response.json();
+    //console.log(responeJSON)
+    var datetime = responeJSON.datetime
+    var hour = datetime.slice(11,13)
+    console.log(hour)
+     
+    if (hour>6 && hour<19 ){
+    
+    background("black")
+    }
+    else{
+   background("white")
+    
+    }
+    ba
+    }
